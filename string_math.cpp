@@ -1,6 +1,6 @@
 #include "string_math.hpp"
 
-void equalize_length(std::string& a, std::string& b)
+static void equalize_length(std::string& a, std::string& b)
 {
     int len_a = a.length();
     int len_b = b.length();
@@ -11,10 +11,10 @@ void equalize_length(std::string& a, std::string& b)
 
 int char_to_int (const char c) { return c - '0';}
 
-std::string zeroes (int n)
+std::string n_chars (char c, int n)
 {
     std::string out = "";
-    for(int i = 0; i<n; i++) out += "0";
+    for(int i = 0; i<n; i++) out += c;
 
     return out;
 }
@@ -42,7 +42,7 @@ std::string add (const std::string& a, const std::string& b)
     return out;
 }
 
-std::string multiply_digit (const std::string& a, const char b)
+static std::string multiply_digit (const std::string& a, const char b)
 {
     std::string out = "";
     int carry = 0;
@@ -72,7 +72,7 @@ std::string multiply (const std::string& a, const std::string& b)
     for(int i = 0; i < len_b; i++)
     {
         std::string tmp = multiply_digit(tmp_a, tmp_b[i]);
-        tmp += zeroes(len_b -i -1);
+        tmp += n_chars('0', len_b -i -1);
         out = add(out, tmp);
     }
 
