@@ -10,6 +10,7 @@ static void equalize_length(std::string& a, std::string& b)
 }
 
 int char_to_int (const char c) { return c - '0';}
+char int_to_char(const int i) { return '0' + i;}
 
 std::string n_chars (char c, int n)
 {
@@ -38,6 +39,45 @@ std::string add (const std::string& a, const std::string& b)
     }
 
     if(carry != 0) out = std::to_string(carry) + out;
+
+    return out;
+}
+
+std::string sub (const std::string& a, const std::string& b)
+{
+    //TODO: check whether a > b, if yes, exit
+    //TODO: implement negative numbers, watch out for borrowing
+    //TODO: Do I really have to copy these?
+
+    std::string tmp_a = a;
+    std::string tmp_b = b;
+
+    equalize_length(tmp_a, tmp_b);
+
+    std::string out = "";
+
+    for(int i = tmp_b.length(); i>= 0; i--)
+    {
+        if(char_to_int(tmp_b[i]) > char_to_int(tmp_a[i]))
+        {
+            //Have to boorow
+            for(int j = i-1; j >= 0; j--)
+            {
+                if(char_to_int(tmp_a[j]) != 0)
+                {
+                    tmp_a[j] = int_to_char(char_to_int(tmp_a[j]) -1);
+                    break;
+                }
+            }
+            out = std::to_string((10 + char_to_int(tmp_a[i])) - char_to_int(tmp_b[i]))  + out;
+        }
+        else
+        {
+            out = std::to_string(char_to_int(tmp_a[i]) - char_to_int(tmp_b[i])) + out;
+        }
+
+        if(tmp_b[i] == '0') break;
+    }
 
     return out;
 }

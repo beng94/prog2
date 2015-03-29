@@ -14,12 +14,13 @@ prec_double prec_double::operator+ (prec_double& b)
     return prec_double(tmp_num, tmp_denom);
 }
 
-/*
 prec_double prec_double::operator- (prec_double& b)
 {
-    return prec_double(num*b.denom - denom * b.num, denom * b.denom);
+    std::string tmp_num = sub(multiply(this->num, b.denom), multiply(this->denom, b.num));
+    std::string tmp_denom = multiply(this->denom, b.denom);
+
+    return prec_double(tmp_num, tmp_denom);
 }
-*/
 
 prec_double prec_double::operator* (prec_double& b)
 {
@@ -55,9 +56,9 @@ prec_double prec_double::operator++()
 
 std::ostream& operator<< (std::ostream& os, prec_double& rhs)
 {
-    std::cout << rhs.num << std::endl;
-    std::cout << n_chars('-', std::max(rhs.num.length(), rhs.denom.length())) << std::endl;
-    std::cout << rhs.denom << std::endl;
+    os << rhs.num << std::endl;
+    os << n_chars('-', std::max(rhs.num.length(), rhs.denom.length())) << std::endl;
+    os << rhs.denom << std::endl;
 
     return os;
 }
