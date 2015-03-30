@@ -2,10 +2,10 @@
 
 int main(void)
 {
-    prec_double a("12", "5");
-    prec_double b("5", "12");
+    prec_double a("4", "4");
+    prec_double b("54", "55");
 
-    prec_double c = a-b;
-    std::cout << c << std::endl;
+    if(b > a) std::cout<< "B is bigger\n";
+    else std::cout << "B is not bigger\n";
     return 0;
 }

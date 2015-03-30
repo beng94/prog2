@@ -56,7 +56,7 @@ std::string sub (const std::string& a, const std::string& b)
 
     std::string out = "";
 
-    for(int i = tmp_b.length(); i>= 0; i--)
+    for(int i = tmp_b.length()-1; i>= 0; i--)
     {
         if(char_to_int(tmp_b[i]) > char_to_int(tmp_a[i]))
         {
@@ -119,3 +119,45 @@ std::string multiply (const std::string& a, const std::string& b)
     return out;
 }
 
+bool equal (const std::string& a, const std::string& b)
+{
+    int len = a.length();
+    int i = 0;
+    while(i < len && a[i] == b[i]) i++;
+
+    if(i == len) return true;
+    return false;
+}
+
+bool smaller(const std::string& a, const std::string& b)
+{
+    int len = a.length();
+    int i = 0;
+
+    if(equal(a, b)) return false;
+    else
+    {
+        while(i < len && a[i] == b[i]) i++;
+
+        if(char_to_int(a[i]) < char_to_int(b[i])) return true;
+        else return false;
+    }
+
+    return false;
+}
+
+bool bigger (const std::string& a, const std::string& b)
+{
+    int len = a.length();
+    int i = 0;
+
+    if(equal(a, b)) return false;
+    else
+    {
+        while(i < len && a[i] == b[i]) i++;
+
+        if(a[i] > b[i]) return true;
+        else return false;
+    }
+    return false;
+}
