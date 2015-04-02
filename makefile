@@ -1,2 +1,9 @@
 all:
-	g++ -g -Wall -std=c++11 -o ALL main.cpp double.cpp double.hpp string_math.cpp string_math.hpp
+	g++ -g -Wall -std=c++11 -o ALL \
+	main.cpp \
+	double.cpp double.hpp \
+	string_math.cpp string_math.hpp \
+	string.cpp string.hpp
+
+string:
+	g++ -g -Wall -std=c++11 -o STRING test.cpp string.hpp string.cpp

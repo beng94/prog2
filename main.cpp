@@ -3,9 +3,9 @@
 int main(void)
 {
     prec_double a("4", "4");
-    prec_double b("54", "55");
+    prec_double b("4", "4");
 
-    if(b > a) std::cout<< "B is bigger\n";
-    else std::cout << "B is not bigger\n";
-    return 0;
+    std::cout << (a-b) << std::endl;
+
+return 0;
 }

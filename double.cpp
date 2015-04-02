@@ -1,31 +1,31 @@
-#include "double.hpp"
 #include "string_math.hpp"
+#include "double.hpp"
 
-prec_double::prec_double(const std::string& num,
-                         const std::string& denom) :
+prec_double::prec_double(const string& num,
+                         const string& denom) :
                         num(num),
                         denom(denom) {}
 
 prec_double prec_double::operator+ (const prec_double& b)
 {
-    std::string tmp_num = add(multiply(this->num, b.denom), multiply(this->denom, b.num));
-    std::string tmp_denom = multiply(this->denom, b.denom);
+    string tmp_num = add(multiply(this->num, b.denom), multiply(this->denom, b.num));
+    string tmp_denom = multiply(this->denom, b.denom);
 
     return prec_double(tmp_num, tmp_denom);
 }
 
 prec_double prec_double::operator- (const prec_double& b)
 {
-    std::string tmp_num = sub(multiply(this->num, b.denom), multiply(this->denom, b.num));
-    std::string tmp_denom = multiply(this->denom, b.denom);
+    string tmp_num = sub(multiply(this->num, b.denom), multiply(this->denom, b.num));
+    string tmp_denom = multiply(this->denom, b.denom);
 
     return prec_double(tmp_num, tmp_denom);
 }
 
 prec_double prec_double::operator* (const prec_double& b)
 {
-    std::string tmp_num = multiply(this->num, b.num);
-    std::string tmp_denom = multiply(this->denom, b.denom);
+    string tmp_num = multiply(this->num, b.num);
+    string tmp_denom = multiply(this->denom, b.denom);
 
     return prec_double(tmp_num, tmp_denom);
 }
@@ -33,8 +33,8 @@ prec_double prec_double::operator* (const prec_double& b)
 
 prec_double prec_double::operator/ (const prec_double& b)
 {
-    std::string tmp_num = multiply(this->num, b.denom);
-    std::string tmp_denom = multiply(this->denom, b.num);
+    string tmp_num = multiply(this->num, b.denom);
+    string tmp_denom = multiply(this->denom, b.num);
 
     return prec_double(tmp_num, tmp_denom);
 }
@@ -56,8 +56,8 @@ prec_double prec_double::operator++()
 
 bool prec_double::operator< (const prec_double& b)
 {
-    std::string tmp_a_num = multiply(this->num, b.denom);
-    std::string tmp_b_num = multiply(this->denom, b.num);
+    string tmp_a_num = multiply(this->num, b.denom);
+    string tmp_b_num = multiply(this->denom, b.num);
 
     if(tmp_a_num.length() < tmp_b_num.length()) return true;
     if(tmp_a_num.length() > tmp_b_num.length()) return false;
@@ -68,8 +68,8 @@ bool prec_double::operator< (const prec_double& b)
 
 bool prec_double::operator> (const prec_double& b)
 {
-    std::string tmp_a_num = multiply(this->num, b.denom);
-    std::string tmp_b_num = multiply(this->denom, b.num);
+    string tmp_a_num = multiply(this->num, b.denom);
+    string tmp_b_num = multiply(this->denom, b.num);
 
     if(tmp_a_num.length() < tmp_b_num.length()) return true;
     if(tmp_a_num.length() > tmp_b_num.length()) return false;
@@ -80,8 +80,8 @@ bool prec_double::operator> (const prec_double& b)
 
 bool prec_double::operator== (const prec_double& b)
 {
-    std::string tmp_a_num = multiply(this->num, b.denom);
-    std::string tmp_b_num = multiply(this->denom, b.num);
+    string tmp_a_num = multiply(this->num, b.denom);
+    string tmp_b_num = multiply(this->denom, b.num);
 
     if(tmp_a_num.length() == tmp_b_num.length())
     {
