@@ -2,9 +2,15 @@
 #include "double.hpp"
 
 prec_double::prec_double(const string& num,
-                         const string& denom) :
-                        num(num),
-                        denom(denom) {}
+                         const string& denom)
+{
+    if(!valid_num(num))
+    {std::cout << "num\n";}
+    if(!valid_num(denom)) std::cout << "denom\n";
+    neg = get_neg(num, denom);
+    this->num = remove_neg(num);
+    this->denom = remove_neg(denom);
+}
 
 prec_double prec_double::operator+ (const prec_double& b)
 {

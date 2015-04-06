@@ -1,5 +1,11 @@
 #include "string.hpp"
 
+string::string()
+{
+    len = 0;
+    str = NULL;
+}
+
 string::string(const char* rhs)
 {
     len = strlen(rhs);
@@ -22,6 +28,19 @@ string::~string()
 }
 
 int string::length() const{ return len; }
+
+string string::substring(int start, int end) const
+{
+    if(start < 0) start = 0;
+    if(end > this->length()-1) end = this->length()-1;
+
+    char* new_str = new char[end-start + 1];
+    strncpy(new_str, str + start, end-start+1);
+    string out(new_str);
+    delete [] new_str;
+
+    return out;
+}
 
 string& string::operator= (const string& rhs)
 {

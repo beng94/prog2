@@ -8,6 +8,7 @@ class prec_double
     private:
         string num; //szamlalo
         string denom; //nevezo
+        bool neg;
     public:
         prec_double(const string& a, const string& b);
 

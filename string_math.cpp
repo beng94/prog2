@@ -178,3 +178,30 @@ bool bigger (const string& a, const string& b)
     }
     return false;
 }
+
+bool valid_num(const string& str)
+{
+    if(str[0] != '-' && (str[0] < '0' || str[0] > '9')) return false;
+    for(int i = 1; i<str.length(); i++)
+    {
+        if(str[i] < '0' || str[i] > '9') return false;
+    }
+
+    return true;
+}
+
+bool get_neg(const string& num, const string& denom)
+{
+    if(num[0] == '-' && denom[0] == '-') return false;
+    if((num[0] == '-' && denom[0] != '-')||
+      (num[0] != '-' && denom[0] == '-')) return true;
+
+    return false;
+}
+
+string remove_neg (const string& str)
+{
+    if(str[0] == '-') return str.substring(1, str.length());
+
+    return str;
+}

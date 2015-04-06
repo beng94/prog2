@@ -10,10 +10,12 @@ private:
     char* str;
     int len;
 public:
+    string();
     string(const char* str);
     string(const string& s);
     ~string();
     int length() const;
+    string substring(int start, int end) const;
 
     string& operator= (const string& rhs);
     char& operator[](int id) const;
