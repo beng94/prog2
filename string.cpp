@@ -34,8 +34,9 @@ string string::substring(int start, int end) const
     if(start < 0) start = 0;
     if(end > this->length()-1) end = this->length()-1;
 
-    char* new_str = new char[end-start + 1];
+    char* new_str = new char[end-start + 2];
     strncpy(new_str, str + start, end-start+1);
+    new_str[end-start+1] = '\0';
     string out(new_str);
     delete [] new_str;
 

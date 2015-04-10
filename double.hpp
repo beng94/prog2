@@ -18,9 +18,9 @@ class prec_double
         prec_double operator/ (const prec_double& b);
         prec_double operator++ (int);
         prec_double operator++ ();
-        bool operator< (const prec_double& b);
-        bool operator> (const prec_double& b);
-        bool operator== (const prec_double& b);
+        bool operator< (const prec_double& b) const;
+        bool operator> (const prec_double& b) const;
+        bool operator== (const prec_double& b) const;
 
         friend std::ostream& operator<< (std::ostream& os, const prec_double& rhs);
 };
