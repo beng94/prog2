@@ -76,7 +76,7 @@ string sub (const string& a, const string& b)
     {
         if(char_to_int(tmp_b[i]) > char_to_int(tmp_a[i]))
         {
-            //Have to boorow
+            //Have to borrow
             for(int j = i-1; j >= 0; j--)
             {
                 if(char_to_int(tmp_a[j]) != 0)
@@ -139,6 +139,7 @@ string multiply (const string& a, const string& b)
 bool equal (const string& a, const string& b)
 {
     int len = a.length();
+    if(len != b.length()) return false;
     int i = 0;
     while(i < len && a[i] == b[i]) i++;
 
@@ -150,6 +151,9 @@ bool smaller(const string& a, const string& b)
 {
     int len = a.length();
     int i = 0;
+
+    if(len < b.length()) return true;
+    if(len > b.length()) return false;
 
     if(equal(a, b)) return false;
     else
@@ -167,6 +171,9 @@ bool bigger (const string& a, const string& b)
 {
     int len = a.length();
     int i = 0;
+
+    if(len > b.length()) return true;
+    if(len < b.length()) return false;
 
     if(equal(a, b)) return false;
     else

@@ -150,64 +150,73 @@ prec_double prec_double::operator/ (const prec_double& b)
     return prec_double(tmp_num, tmp_denom);
 }
 
-//TODO implement negative numbers
 prec_double prec_double::operator++ (int)
 {
-    //num = add(num, denom);
     prec_double tmp = *this;
     *this = *this + prec_double(this->denom, this->denom);
 
     return tmp;
 }
 
-//TODO: implement negative numbers
 prec_double prec_double::operator++()
 {
-    prec_double tmp(num, denom);
-    ++(*this);
+    *this= *this + prec_double(this->denom, this->denom);
 
-    return tmp;
+    return *this;
 }
 
-//TODO: implement negative numbers
 bool prec_double::operator< (const prec_double& b) const
 {
+    if(this->neg == true && b.neg == false) return true;
+    if(this->neg == false && b.neg == true) return false;
+
     string tmp_a_num = multiply(this->num, b.denom);
     string tmp_b_num = multiply(this->denom, b.num);
 
-    if(tmp_a_num.length() < tmp_b_num.length()) return true;
-    if(tmp_a_num.length() > tmp_b_num.length()) return false;
-    else if(smaller(tmp_a_num, tmp_b_num)) return true;
-
-    return false;
-}
-
-//TODO: implement negative numbers
-bool prec_double::operator> (const prec_double& b) const
-{
-    string tmp_a_num = multiply(this->num, b.denom);
-    string tmp_b_num = multiply(this->denom, b.num);
-
-    if(tmp_a_num.length() < tmp_b_num.length()) return true;
-    if(tmp_a_num.length() > tmp_b_num.length()) return false;
-    else if(bigger(tmp_a_num, tmp_b_num)) return true;
-
-    return false;
-}
-
-//TODO: implement negative number
-bool prec_double::operator== (const prec_double& b) const
-{
-    string tmp_a_num = multiply(this->num, b.denom);
-    string tmp_b_num = multiply(this->denom, b.num);
-
-    if(tmp_a_num.length() == tmp_b_num.length())
+    if(this->neg == false && b.neg == false)
     {
-        if(equal(tmp_a_num, tmp_b_num)) return true;
+        if(smaller(tmp_a_num, tmp_b_num)) return true;
         else return false;
-
+    }
+    if(this->neg == true && b.neg == true)
+    {
+        if(bigger(tmp_a_num, tmp_b_num)) return true;
+        else return false;
     }
 
+    return false;
+}
+
+bool prec_double::operator> (const prec_double& b) const
+{
+    if(this->neg == true && b.neg == false) return false;
+    if(this->neg == false && b.neg == true) return true;
+
+    string tmp_a_num = multiply(this->num, b.denom);
+    string tmp_b_num = multiply(this->denom, b.num);
+
+    if(this->neg == false && b.neg == false)
+    {
+        if(bigger(tmp_a_num, tmp_b_num)) return true;
+        else return false;
+    }
+    if(this->neg == true && b.neg == true)
+    {
+        if(smaller(tmp_a_num, tmp_b_num)) return true;
+        else return false;
+    }
+
+    return false;
+}
+
+bool prec_double::operator== (const prec_double& b) const
+{
+    if(this->neg != b.neg) return false;
+
+    string tmp_a_num = multiply(this->num, b.denom);
+    string tmp_b_num = multiply(this->denom, b.num);
+
+    if(equal(tmp_a_num, tmp_b_num)) return true;
     return false;
 }
 
