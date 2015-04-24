@@ -3,4 +3,5 @@ all:
 	main.cpp \
 	double.cpp double.hpp \
 	string_math.cpp string_math.hpp \
-	string.cpp string.hpp
+	string.cpp string.hpp \
+	test.hpp test.cpp

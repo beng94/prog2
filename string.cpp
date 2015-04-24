@@ -57,7 +57,7 @@ string& string::operator= (const string& rhs)
     return *this;
 }
 
-string string::operator+(string& rhs)
+string string::operator+(const string& rhs) const
 {
     char* tmp = new  char [len + rhs.len + 1];
     strcpy(tmp, str);
@@ -67,6 +67,12 @@ string string::operator+(string& rhs)
     delete[] tmp;
 
     return out;
+}
+
+string operator+(const char* lhs, const string& rhs)
+{
+    string str(lhs);
+    return str + rhs;
 }
 
 string string::operator+(char c)

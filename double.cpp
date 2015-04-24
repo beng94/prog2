@@ -4,7 +4,9 @@
 prec_double::prec_double(const string& num,
                          const string& denom)
 {
-    if(!valid_num(num) || !valid_num(denom)) throw "invalid input";
+    string a("invalid input: ");
+    if(!valid_num(num) || !valid_num(denom))
+        throw ("invalid input " + num + " " + denom);
     neg = get_neg(num, denom);
     this->num = remove_neg(num);
     this->denom = remove_neg(denom);

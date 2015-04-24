@@ -1,7 +1,8 @@
+#ifndef DOUBLE_H
+#define DOUBLE_H
+
 #include "string.hpp"
 #include <iostream>
-
-//TODO: implement negative numbers
 
 class prec_double
 {
@@ -24,3 +25,5 @@ class prec_double
 
         friend std::ostream& operator<< (std::ostream& os, const prec_double& rhs);
 };
+
+#endif

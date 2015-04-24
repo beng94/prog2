@@ -19,10 +19,11 @@ public:
 
     string& operator= (const string& rhs);
     char& operator[](int id) const;
-    string operator+(string& rhs);
+    string operator+(const string& rhs) const;
     string operator+(char c);
     bool operator==(const char* rhs) const;
     friend string operator+(char c, string& rhs);
+    friend string operator+(const char* str, const string& rhs);
     friend std::ostream& operator<< (std::ostream& os, const string& rhs);
 };
 
